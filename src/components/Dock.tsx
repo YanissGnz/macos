@@ -6,7 +6,7 @@ import { docksApps } from "../mocks/DockApps";
 
 function Dock() {
 	return (
-		<div className="fixed bottom-1 w-full flex justify-center">
+		<div className="fixed bottom-1 w-full flex justify-center z-50">
 			<motion.div
 				animate={{ y: [100, 0] }}
 				transition={{ delay: 0.5 }}
@@ -14,7 +14,11 @@ function Dock() {
 			>
 				{docksApps.map((item, i) =>
 					item.type === "app" ? (
-						<DockItem name={item.name} icon={item.icon} key={i} />
+						<DockItem
+							name={item.name as "finder" | "reminders" | "notes"}
+							icon={item.icon}
+							key={i}
+						/>
 					) : (
 						<div className="w-[1.8px] h-11 bg-black opacity-20 rounded-full mt-1 mb-2" />
 					)

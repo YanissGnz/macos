@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { openApp } from "../redux/appSlice";
-import { useAppDispatch } from "../redux/hooks";
+import { toggleMinimize, openApp, focus } from "../redux/appSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 const variants = {
 	hover: { y: -10 },
@@ -14,13 +14,15 @@ const variants = {
 };
 
 interface DockItemProps {
-	name?: string;
+	name: "finder" | "reminders" | "notes";
 	icon?: string;
 	key: number;
 }
 
 function DockItem({ name, icon, key }: DockItemProps) {
 	const dispatch = useAppDispatch();
+	const isOpen = useAppSelector((state) => state.apps[name].isOpen);
+	const focused = useAppSelector((state) => state.apps.focused) === name;
 	return (
 		<motion.div
 			key={key}
@@ -28,7 +30,9 @@ function DockItem({ name, icon, key }: DockItemProps) {
 			whileTap="tap"
 			className="h-14 w-14 flex flex-col items-center content-center cursor-pointer"
 			onClick={() => {
-				dispatch(openApp("notes"));
+				if (!isOpen) dispatch(openApp(name));
+				else if (!focused) dispatch(focus(name));
+				else dispatch(toggleMinimize(name));
 			}}
 		>
 			<motion.img
@@ -38,7 +42,9 @@ function DockItem({ name, icon, key }: DockItemProps) {
 				className="object-cover h-12 w-12"
 				draggable={false}
 			/>
-			{/* <div className="w-1 h-1 bg-indigo-900 rounded-full"></div> */}
+			{isOpen && (
+				<div className="w-1 h-1 bg-gray-900 bg-opacity-70 rounded-full"></div>
+			)}
 		</motion.div>
 	);
 }

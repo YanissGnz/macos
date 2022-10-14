@@ -10,7 +10,7 @@ function MenuBar() {
 		<motion.div
 			animate={{ y: [-100, 0] }}
 			transition={{ delay: 0.5 }}
-			className="fixed top-0 w-full backdrop-sepia-0 bg-white/30  flex flex-row px-5 items-center justify-between gap-4"
+			className="fixed top-0 w-full backdrop-sepia-0 bg-white/30  flex flex-row px-5 items-center justify-between gap-4 z-50"
 		>
 			<div className="flex flex-row items-center gap-4 h-4">
 				<AppleLogo className="text-black h-4 w-4 mr-2" color="black" />

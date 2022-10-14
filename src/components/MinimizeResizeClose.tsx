@@ -1,8 +1,8 @@
 import React from "react";
-import { closeApp, toggleFullScreen } from "../../redux/appSlice";
-import { useAppDispatch } from "../../redux/hooks";
+import { closeApp, toggleMinimize, toggleFullScreen } from "../redux/appSlice";
+import { useAppDispatch } from "../redux/hooks";
 
-function MinimizeResizeClose({ appName }: { appName: "notes" }) {
+function MinimizeResizeClose({ appName }: { appName: "notes" | "finder" }) {
 	const dispatch = useAppDispatch();
 	return (
 		<div className="h-10 w-full p-5 py-6 flex flex-row items-center gap-2">
@@ -18,7 +18,12 @@ function MinimizeResizeClose({ appName }: { appName: "notes" }) {
 					dispatch(toggleFullScreen(appName));
 				}}
 			/>
-			<div className="h-3 w-3 rounded-full bg-green-500 cursor-pointer" />
+			<div
+				className="h-3 w-3 rounded-full bg-green-500 cursor-pointer"
+				onClick={() => {
+					dispatch(toggleMinimize(appName));
+				}}
+			/>
 		</div>
 	);
 }

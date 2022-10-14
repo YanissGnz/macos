@@ -5,17 +5,17 @@ export const docksApps = [
 		icon: "finder.png",
 	},
 	{
-		name: "safari",
+		name: "reminders",
 		type: "app",
 		icon: "safari.png",
 	},
 	{
-		name: "messages",
+		name: "reminders",
 		type: "app",
 		icon: "messages.png",
 	},
 	{
-		name: "mail",
+		name: "reminders",
 		type: "app",
 		icon: "mail.png",
 	},
@@ -31,30 +31,31 @@ export const docksApps = [
 	},
 
 	{
-		name: "maps",
+		name: "reminders",
 		type: "app",
 		icon: "maps.png",
 	},
 	{
-		name: "calendar",
+		name: "reminders",
 		type: "app",
 		icon: "calendar.png",
 	},
 	{
-		name: "contacts",
+		name: "reminders",
 		type: "app",
 		icon: "contacts.png",
 	},
 	{
+		name: "reminders",
 		type: "divider",
 	},
 	{
-		name: "system preferences",
+		name: "reminders",
 		type: "app",
 		icon: "system-preferences.png",
 	},
 	{
-		name: "rubbish-bin",
+		name: "reminders",
 		type: "app",
 		icon: "rubbish-bin.png",
 	},
